@@ -9,13 +9,13 @@ pipeline {
     stages {
         stage('Build one') {
             steps {
-                echo 'Hello World'
+                echo 'Build successfully'
             }
         }
  
         stage('Build') {
                 when {
-                expression { return !params.SKIP_TEST }
+                expression { return !params.SKIP_BUILD }
             }
             steps {
                 echo 'Build Stage'
