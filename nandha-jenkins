@@ -7,7 +7,7 @@ pipeline {
     }
  
     stages {
-        stage('Hello') {
+        stage('Build one') {
             steps {
                 echo 'Hello World'
             }
@@ -29,40 +29,10 @@ pipeline {
             }
         }
  
-        stage('Staging') {
-            steps {
-                echo 'Staging Stage'
-            }
-        }
- 
         stage('Deploy') {
             steps {
                 echo 'Deploy Stage'
             }
-        }
- 
-        stage('Post Deploy') {
-            steps {
-                echo 'Post Deployment Stage'
-            }
-        }
- 
-        stage('Prod') {
-            steps {
-                echo 'Prod Stage'
-            }
-        }
-    }
- 
-    post {
-        always {
-            echo "Build finished"
-        }
-        success {
-            echo "Build completed successfully!"
-        }
-        failure {
-            echo "Build failed!"
         }
     }
 }
