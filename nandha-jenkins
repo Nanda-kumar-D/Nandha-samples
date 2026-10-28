@@ -1,0 +1,38 @@
+pipeline {
+    agent { label 'Linux' }
+
+ 
+    parameters {
+        booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skip the Build stage')
+    }
+ 
+    stages {
+        stage('Build one') {
+            steps {
+                echo 'Build successfully'
+            }
+        }
+ 
+        stage('Build') {
+                when {
+                expression { return !params.SKIP_BUILD }
+            }
+            steps {
+                echo 'Build Stage'
+            }
+        }
+ 
+        stage('Test') {
+            
+            steps {
+                echo 'Test Stage'
+            }
+        }
+ 
+        stage('Deploy') {
+            steps {
+                echo 'Deploy Stage'
+            }
+        }
+    }
+}
